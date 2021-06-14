@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Fake News Detection</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./../static/css/Style.css" />
+  <style> 
+      .flip-card {
+      background-color:linear-gradient(to right top, #ed3fa3, #da3aab, #c438b3, #aa39b9, #8d3cbe, #753bb6, #5c39ad, #4236a3, #302e8c, #202676, #121e60, #05164a);
+      width: inherit;
+      height:inherit; 
+      min-height:450px;
+      min-width:70%;
+      margin-left:15%;
+      perspective: 1000px;
+    }
+    .card_face {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      backface-visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="top">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-7 col-sm-12  text-white">
+          <h1>FAKE NEWS DETECTION USING ML</h1>
+          <a href="#predict">
+            <button class="btn btn-light px-5 py-2 primary-btn" id="md">
+            Check News
+            </button>
+          </a>
+        </div>
+        <div class="col-md-5 col-sm-12  h-50">
+          <img src="./../static/images/pic2.jpg" style="margin-top:12%;">
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="container-fluid p-0">
+      <div class="cover">
+        <div class="content text-center">
+          <h1>Models and their accuracies</h1>
+        </div>
+      </div>
+      <div class="container-fluid text-center">
+        <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
+          <div class="rect">
+            <h2>89.22%</h2>
+            <p>Bernoulli Naive Bayes Classifier</p>
+          </div>
+          <div class="rect">
+            <h2>88.09%</h2>
+            <p>Multinomial Naive Bayes Classifier</p>
+          </div>
+          <div class="rect">
+            <h2>89.46%</h2>
+            <p>XGB Classifier</p>
+          </div>
+          <div class="rect">
+            <h2>88.54%</h2>
+            <p>Gradient Boosting Classifier</p>
+          </div>
+          <div class="rect">
+            <h2>94.06%</h2>
+            <p>Stochastic Gradient Descent Classifier</p>
+          </div>
+          <div class="rect">
+            <h2>90.76%</h2>
+            <p>Decision Tree Classifier</p>
+          </div>
+          <div class="rect">
+            <h2>94.19%</h2>
+            <p>Logistic Regression Model</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-fluid p-0" id="predict">
+      <div class="cover">
+        <div class="content text-center">
+          <h1 style="font-size:6vmin">Verify news</h1>
+        </div>
+      </div>
+      <div class="container-fluid text-center">
+        <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
+          <div class="rect container" style="width: 70%;min-height:600px;padding:3vh">
+            <div class="flip-container" style="width: 100%; height:inherit">
+              <div class="flipper" >
+                  <div class="front">
+                      <div class="container" style="padding:20px 15px;max-height:500px;margin-top:40px;border-radius:15px; background: linear-gradient(to right top, #ed3fa3, #da3aab, #c438b3, #aa39b9, #8d3cbe, #753bb6, #5c39ad, #4236a3, #302e8c, #202676, #121e60, #05164a);">
+                        <form style="margin:5%;max-height:400px;">
+                          <div class="mb-3">
+                            <label class="form-label"><p style="font-size:30px; color:white;margin-bottom: 0px;">Enter news</p></label>
+                            <textarea type="text" class="form-control" id="news" style="min-height:300px;"></textarea>
+                          </div>
+                          <button class="btn btn-primary pb" onclick="getResult()" id="sub1">Submit</button>
+                        </form>
+                      </div>
+                  </div>
+                  <div class="back vertical-center" style="min-height:475px;padding:20px 15px;max-height:500px;margin-top:40px;border-radius:15px; background: linear-gradient(to right top, #ed3fa3, #da3aab, #c438b3, #aa39b9, #8d3cbe, #753bb6, #5c39ad, #4236a3, #302e8c, #202676, #121e60, #05164a);">
+                    <div class="media d-flex justify-content-center" id="picholder"> <span id="result" style="background-color: white;"></span> </div>
+                    <button class="btn btn-primary rb" id="sub" style="margin-top:2%">Retry!</button>
+                  </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-fluid p-0"  >
+      <div class="cover" >
+        <div class="content text-center" style="font-size:6vmin;padding-bottom:0px;margin-bottom: 0px;">
+          <a href="https://github.com/CVR2022/Fake-News-Detection-Using-ML/tree/main/DataSets" style="text-decoration:none; color:whitesmoke;" target="_blank"><h6 style="font-size:6vmin;">Click here to see the datasets used to train the model.<i class="fab fa-github"></i></h6></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <a href="#top" style="position: fixed;bottom:5px;right:5px; float:right; padding:5px;"><button class="btn btn-primary"><i class="fa fa-angle-double-up"></i></button></a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+	<script src="https://cdn.rawgit.com/download/jQuery-Touch-Events/0.9.0/src/jquery.mobile-events.min.js"></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.1.2/dist/jquery.flip.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+	<script src="https://cdn.rawgit.com/download/jQuery-Touch-Events/0.9.0/src/jquery.mobile-events.min.js"></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.1.2/dist/jquery.flip.min.js"></script>
+	<script type="text/javascript">
+    function getResult()
+    {
+      var text=$('#news').val();
+      if(text=="")
+      {
+        alert("Invalid Input");
+        return;
+      }
+      req=$.ajax({
+          url:'/predict',
+          type:'POST',
+          data:{text : text}
+      });
+      const myNode = document.getElementById("picholder");
+      while (myNode.firstChild) {
+        myNode.removeChild(myNode.lastChild);
+      }
+      req.done(function(data){
+          console.log(data.result);
+          if(data.result.localeCompare("The news is REAL!!😃")==0)
+          {
+            var img = document.createElement("img");
+            img.src = "./../static/images/REAL!.gif";
+            img.id="pic";
+            var src = document.getElementById("picholder");
+            src.appendChild(img);
+          }
+          else
+          {
+            var img = document.createElement("img");
+            img.src = "./../static/images/FAKE.gif";
+            img.id="pic";
+            var src = document.getElementById("picholder");
+            src.appendChild(img);
+          }
+          $('#pic').css({
+              'max-height':'350px',
+              // 'max-width':'200px',
+              'max-width':'65%',
+              
+              'margin':'50px'
+          });
+          // $('#result').text(data.result);
+      });
+    }
+
+    $('.pb').click(function($e) {
+    var text=$('#news').val();
+    if(text=="")
+    {
+      $e.preventDefault();
+      return;
+    }
+    $e.preventDefault();
+    $(this).closest('.flip-container').toggleClass('hover');
+    $(this).css('transform, rotateY(180deg)');
+    });
+
+    $('.rb').click(function($e) {
+    $e.preventDefault();
+    $(this).closest('.flip-container').toggleClass('hover');
+    $(this).css('transform, rotateY(180deg)');
+    $('#news').val("");
+    });
+
+    
+    </script>
+</body>
+</html>

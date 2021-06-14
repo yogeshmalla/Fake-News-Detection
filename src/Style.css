@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css?family=Acme|Lobster|Patua+One|Rubik|Sniglet|Cairo");
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@800&family=Rakkas&display=swap');
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: linear-gradient(to right top, #ed3fa3, #da3aab, #c438b3, #aa39b9, #8d3cbe, #753bb6, #5c39ad, #4236a3, #302e8c, #202676, #121e60, #05164a);
+}
+header .row .col-md-7 {
+  padding: 12vmin 1vmin;
+  /* padding-bottom: 35vmin; */
+}
+
+header .row .col-md-5 {
+  padding: 12vmin 1vmin;
+  /* padding-bottom: 35vmin; */
+}
+
+header .row .col-md-5 img {
+  max-width: 90%;
+}
+
+header {
+  background: #ff512f;
+  background: linear-gradient(to right top, #ed3fa3, #da3aab, #c438b3, #aa39b9, #8d3cbe, #753bb6, #5c39ad, #4236a3, #302e8c, #202676, #121e60, #05164a);
+}
+
+header .container .col-md-7 {
+  font-family: 'Alegreya', serif;
+  font-family: 'Cairo', cursive;
+}
+
+header .container .col-md-7 h6 {
+  padding: 1vmin;
+  letter-spacing: 4px;
+}
+
+header .container .col-md-7 h1 {
+  font-size: 10vmin;
+  font-weight: bold;
+  padding: 0.1em 0em;
+}
+
+header .container .col-md-7 p {
+  padding: 1vmin 5vmin;
+}
+
+.primary-btn {
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.cover {
+  width: 100%;
+  height: 40vmin;
+  background-position: -24rem -19rem;
+  background-size: 100%;
+  position: relative;
+}
+
+.cover .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 999;
+}
+
+.cover .content {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding-top: 10vmin;
+}
+
+.cover .content > h1 {
+  font-family: var(--Patua);
+  font-size: 6vmin;
+  color: whitesmoke;
+}
+
+.numbers .rect {
+  position: relative;
+  z-index: 1;
+  background: white;
+  width: 17rem;
+  height: 12rem;
+  padding-top: 3.5vmin;
+  margin: 1rem;
+  border-radius: 0.5em;
+  box-shadow: 1px 2px 50px 0px #5C40C2;
+}
+
+.numbers {
+  margin-top: -15vmin;
+}
+
+.numbers .rect h2 {
+  padding-top: 1rem;
+  font-size: 3rem;
+  color: #5c39ad;
+}
+
+.numbers .rect > p {
+  padding-top: 1rem;
+  font-family: Rubik;
+}
+
+.flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container,
+.front,
+.back {
+ height: 100%;
+  width:100%;
+  
+
+}
+
+
+/* flip speed */
+
+.flipper {
+  transition: 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+  
+}
+
+
+/* hide back of pane during swap */
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+/* front pane, placed above back */
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #fff;
+}
+
